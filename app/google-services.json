@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "307220403841",
+    "project_id": "androidtaxi-18d88",
+    "storage_bucket": "androidtaxi-18d88.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307220403841:android:11df82e46057b37e879f80",
+        "android_client_info": {
+          "package_name": "ru.gorbulevsv.androidtaxi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307220403841-q4ec1289t7rp1rhui237pgsdh8mpnpup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHuIOl2U02HLttPoysqVEPdlmY5PENNv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307220403841-q4ec1289t7rp1rhui237pgsdh8mpnpup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:307220403841:android:0a582a1aaa8d191a879f80",
+        "android_client_info": {
+          "package_name": "ru.gorbulevsv.androidyandexmapjs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "307220403841-q4ec1289t7rp1rhui237pgsdh8mpnpup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHuIOl2U02HLttPoysqVEPdlmY5PENNv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "307220403841-q4ec1289t7rp1rhui237pgsdh8mpnpup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
