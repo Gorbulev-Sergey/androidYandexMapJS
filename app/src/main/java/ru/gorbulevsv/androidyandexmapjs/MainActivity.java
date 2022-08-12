@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements IMyLocationListen
     WebView webview;
     TextView textToolbarTitle;
     Button buttonToolbarLogout, buttonMapToCenter, buttonAddPlacemarks;
-    int LOCATION_REFRESH_TIME = 5000; // 1 seconds to update
+    int LOCATION_REFRESH_TIME = 6000; // 1 seconds to update
     int LOCATION_REFRESH_DISTANCE = 0; // 1 meters to update
     int PERMISSIONS_REQUEST_FINE_LOCATION = 1;
     FirebaseAuth auth;
