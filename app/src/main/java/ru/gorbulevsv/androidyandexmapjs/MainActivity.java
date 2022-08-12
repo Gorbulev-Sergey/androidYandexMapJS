@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements IMyLocationListen
     TextView textToolbarTitle;
     Button buttonToolbarLogout, buttonMapToCenter, buttonAddPlacemarks;
     int LOCATION_REFRESH_TIME = 6000; // 1 seconds to update
-    int LOCATION_REFRESH_DISTANCE = 1; // 1 meters to update
+    int LOCATION_REFRESH_DISTANCE = 0; // 1 meters to update
     int PERMISSIONS_REQUEST_FINE_LOCATION = 1;
     FirebaseAuth auth;
     FirebaseDatabase database;
