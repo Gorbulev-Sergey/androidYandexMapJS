@@ -59,6 +59,7 @@ ymaps.ready(function () {
   //map.controls.remove("zoomControl"); // удаляем контрол зуммирования
   map.controls.remove("rulerControl"); // удаляем контрол правил
   map.behaviors.disable(["scrollZoom"]); // отключаем скролл карты (опционально)
+
   // Размещение геообъекта на карте.
   placemark = new ymaps.Placemark(
     Kaluga,
@@ -71,8 +72,7 @@ ymaps.ready(function () {
       iconImageOffset: [-20, -20],
     }
   );
-  addPlacemarkAsync("", Kaluga[0], Kaluga[1]);
-  addPlacemarkMap1(s);
+  addPlacemarkMap(s);
 });
 
 function setCoord(lat, lon) {
@@ -128,40 +128,20 @@ async function addPlacemarkAsync(userUId, lat, lon) {
   await p;
 }
 
-async function addPlacemarkCollection(sender) {
-  let p = new Promise((res, rej) => {
-    sender.forEach((item) => {
-      map.geoObjects.add(
-        new ymaps.Placemark(
-          [item.myLocation.latitude, item.myLocation.longitude],
-          {},
-          {
-            iconLayout: "default#image",
-            iconImageHref:
-              "https://i.ebayimg.com/00/s/MTAyNFgxMDI0/z/WOgAAOSwVLRaT6J8/$_3.JPG?set_id=8800005007",
-            iconImageSize: [40, 40],
-            iconImageOffset: [-20, -20],
-          }
-        )
-      );
-    });
-  });
-  await p;
-}
-
 async function addPlacemarkMap(sender) {
   let p = new Promise((res, rej) => {
-    sender.forEach((item) => {
+    let m = new Map(Object.entries(sender));
+    m.forEach((value, key) => {
       let balloon = ymaps.templateLayoutFactory.createClass(
         `<div>
-              <h3>Водитель ${item}</h3>
-              <p>Координаты объекта: ${item.myLocation.latitude}, ${item.myLocation.longitude}</p>
+              <h5>Водитель ${key}</h5>
+              <p>Координаты объекта: ${value.myLocation.latitude}, ${value.myLocation.longitude}</p>
               <button class="btn btn-sm btn-light mt-3 mr-1" onclick="setCenter(${value.myLocation.latitude}, ${value.myLocation.longitude})">В центр</button>
           </div>`
       );
       map.geoObjects.add(
         new ymaps.Placemark(
-          [item.myLocation.latitude, item.myLocation.longitude],
+          [value.myLocation.latitude, value.myLocation.longitude],
           {},
           {
             iconLayout: "default#image",
@@ -175,36 +155,6 @@ async function addPlacemarkMap(sender) {
         )
       );
     });
-  });
-  await p;
-}
-
-async function addPlacemarkMap1(s) {
-  let p = new Promise((res, rej) => {
-    for (let item in s) {
-      let balloon = ymaps.templateLayoutFactory.createClass(
-        `<div>
-              <h3>Водитель ${item}</h3>
-              <p>Координаты объекта: ${item.myLocation.latitude}, ${item.myLocation.longitude}</p>
-              <button class="btn btn-sm btn-light mt-3 mr-1" onclick="setCenter(${item.myLocation.latitude}, ${item.myLocation.longitude})">В центр</button>
-          </div>`
-      );
-      map.geoObjects.add(
-        new ymaps.Placemark(
-          [item.myLocation.latitude, item.myLocation.longitude],
-          {},
-          {
-            iconLayout: "default#image",
-            iconImageHref:
-              "https://i.ebayimg.com/00/s/MTAyNFgxMDI0/z/WOgAAOSwVLRaT6J8/$_3.JPG?set_id=8800005007",
-            iconImageSize: [40, 40],
-            iconImageOffset: [-20, -20],
-            balloonContentLayout: balloon,
-            balloonPanelMaxMapArea: 0,
-          }
-        )
-      );
-    }
   });
   await p;
 }

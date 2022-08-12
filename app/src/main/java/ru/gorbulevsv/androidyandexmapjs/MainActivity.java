@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements IMyLocationListen
     TextView textToolbarTitle;
     Button buttonToolbarLogout, buttonMapToCenter, buttonAddPlacemarks;
     int LOCATION_REFRESH_TIME = 6000; // 1 seconds to update
-    int LOCATION_REFRESH_DISTANCE = 0; // 1 meters to update
+    int LOCATION_REFRESH_DISTANCE = 1; // 1 meters to update
     int PERMISSIONS_REQUEST_FINE_LOCATION = 1;
     FirebaseAuth auth;
     FirebaseDatabase database;
@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements IMyLocationListen
             isOnline = true;
         }};
         gettingLocationIsRun = true;
-        addAllUsersOnMap();
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new MyLocationListener(this);
@@ -70,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements IMyLocationListen
         } else {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME,
                     LOCATION_REFRESH_DISTANCE, locationListener);
+            //addAllUsersOnMap();
         }
     }
 
@@ -148,24 +148,10 @@ public class MainActivity extends AppCompatActivity implements IMyLocationListen
         }
     }
 
-    class MyAsyncTask extends AsyncTask<String, Integer, Integer> {
-
-        @Override
-        protected Integer doInBackground(String... strings) {
-            return null;
-        }
-    }
-
     void addAllUsersOnMap() {
         GenericTypeIndicator<HashMap<String, User>> t = new GenericTypeIndicator<HashMap<String, User>>() {
         };
         database.getReference().child("users").get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                users = task.getResult().getValue(t);
-//                Collection<User> v = users.values();
-//                Gson gson = new Gson();
-//                webview.loadUrl("javascript:addPlacemarkCollection(" + gson.toJson(v) + ")");
-//            }
             if (task.isSuccessful()) {
                 users = task.getResult().getValue(t);
                 Gson gson = new Gson();
